@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "BeerService";
+
+package beer;
+
+// The beer service definition.
+service Beers {
+  // Get a beer
+	rpc GetBeer (BeerRequest) returns (BeerReply);
+}
+
+// The request message containing the beer's name.
+message BeerRequest {
+	string name = 1;
+}
+
+// The response message containing the beer.
+message BeerReply {
+	uint32 id = 1;
+	string name = 2;
+	double EBC = 3;
+	double EBU = 4;
+	double alcoholPercentage = 5;
+}
