@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+
+option csharp_namespace = "BeerService";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+package beer;
+
+// The beer service definition.
+service Beers {
+  // Get a beer
+	rpc GetBeer (BeerRequest) returns (BeerReply);
+	rpc GetBeers (google.protobuf.Empty) returns (stream BeerReply);
+}
+
+// The request message containing the beer's name.
+message BeerRequest {
+	string name = 1;
+}
+
+enum BeerType {
+	Trappist = 0;
+	BelgianBlond = 1;
+	Stout = 2;
+}
+
+// The response message containing the beer.
+message BeerReply {
+	reserved 9;
+	reserved "brewery";
+
+	uint32 id = 1;
+	string name = 2;
+	double EBC = 3;
+	double EBU = 4;
+	double alcoholPercentage = 5;
+	google.protobuf.Timestamp bestBefore = 6;
+	BeerType beerType = 7;
+	repeated string hops = 8;
+	// string brewery = 9;
+	// uint32 brewCompany = 9;
+	// string brewery = 10;
+}
