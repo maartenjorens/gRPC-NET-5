@@ -27,7 +27,8 @@ namespace BeerService
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<BeerService>();
+                endpoints.MapGrpcService<BeerServiceV1>();
+                endpoints.MapGrpcService<BeerServiceV2>();
 
                 endpoints.MapGet("/", async context =>
                 {

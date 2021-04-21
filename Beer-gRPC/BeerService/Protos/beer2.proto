@@ -3,7 +3,7 @@ syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 
-package beer.v1;
+package beer.v2;
 
 // The beer service definition.
 service Beers {
@@ -14,7 +14,9 @@ service Beers {
 
 // The request message containing the beer's name.
 message BeerRequest {
-	string name = 1;
+	reserved "name";
+	reserved 1;
+	uint32 id = 2;
 }
 
 enum BeerType {

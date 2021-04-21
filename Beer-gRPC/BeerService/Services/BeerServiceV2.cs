@@ -1,3 +1,4 @@
+using Beer.V2;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
 using System;
@@ -6,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace BeerService
 {
-    public class BeerService : Beers.BeersBase
+    public class BeerServiceV2 : Beer.V2.Beers.BeersBase
     {
-        private readonly ILogger<BeerService> _logger;
-        public BeerService(ILogger<BeerService> logger)
+        private readonly ILogger<BeerServiceV2> _logger;
+        public BeerServiceV2(ILogger<BeerServiceV2> logger)
         {
             _logger = logger;
         }
 
         public override Task<BeerReply> GetBeer(BeerRequest request, ServerCallContext context)
         {
-            _logger.LogInformation("Requesting beer with name: {name}", request.Name);
+            _logger.LogInformation("Requesting beer with id: {id}", request.Id);
             var bestBeforeDate = Google.Protobuf.WellKnownTypes.Timestamp.FromDateTime(DateTime.UtcNow.AddDays(30));
 
             return Task.FromResult(new BeerReply
             {
                 Id = 1,
-                Name = "Duvel",
+                Name = "Duvel V2 VERSION",
                 AlcoholPercentage = 8.5,
                 EBC = 5.7,
                 EBU = 32,
