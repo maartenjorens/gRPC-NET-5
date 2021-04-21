@@ -61,12 +61,12 @@ namespace BeerService
                 new BeerReply
                 {
                     Id = 2,
-                    Name = "Westmalle Tripel",
+                    Name = "Guinness",
                     AlcoholPercentage = 9,
                     EBC = 5.7,
                     EBU = 32,
                     BestBefore = Google.Protobuf.WellKnownTypes.Timestamp.FromDateTime(DateTime.UtcNow.AddDays(90)),
-                    BeerType = BeerType.Trappist,
+                    BeerType = BeerType.Stout,
                     Hops =
                     {
                         "admiral"

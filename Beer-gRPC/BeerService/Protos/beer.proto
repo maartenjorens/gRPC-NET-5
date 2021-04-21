@@ -28,6 +28,9 @@ enum BeerType {
 
 // The response message containing the beer.
 message BeerReply {
+	reserved 9;
+	reserved "brewery";
+
 	uint32 id = 1;
 	string name = 2;
 	double EBC = 3;
@@ -36,4 +39,7 @@ message BeerReply {
 	google.protobuf.Timestamp bestBefore = 6;
 	BeerType beerType = 7;
 	repeated string hops = 8;
+	// string brewery = 9;
+	// uint32 brewCompany = 9;
+	// string brewery = 10;
 }
